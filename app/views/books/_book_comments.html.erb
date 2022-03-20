@@ -1,0 +1,20 @@
+<table>
+  <tbody>
+    <% book.book_comments.each do |comment| %>
+      <tr>
+        <td>
+          <%= image_tag comment.user.get_profile_image, size: "50x50" %><br>
+          <%= link_to comment.book.title, book_path(comment) %>
+        </td>
+        <td>
+        <%= comment.comment %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+  <%= form_with model: [book, book_comment] do |f| %>
+    <%= f.text_area :comment, class: "form-control", style: "height: 100px" %>
+    <%= f.submit '送信', class: "mt-2" %>
+  <% end %>

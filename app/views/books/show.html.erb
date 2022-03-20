@@ -19,15 +19,7 @@
           <td><%= link_to @book.title, @book %></td>
           <td><%= @book.body %></td>
           <td>
-            <% if @book.favorited_by?(current_user) %>
-                <%= link_to book_favorites_path(@book), method: :delete do %>
-                  <i class="fas fa-heart"></i>
-                <% end %>
-              <% else %>
-                <%= link_to book_favorites_path(@book), method: :post do %>
-                  <i class="far fa-heart"></i>
-                <% end %>
-            <% end %>
+            <%= render 'favorites', book: @book %>
           </td>
           <% if @user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>

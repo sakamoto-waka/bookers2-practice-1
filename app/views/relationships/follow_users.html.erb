@@ -1,2 +1,6 @@
 <h1>Follow Users</h1>
-<%= render 'users/index', users: @users %>
+<% unless @users.blank? %>
+  <%= render 'users/index', users: @users %>
+<% else %>
+  <p>フォロ-はしていません</p>
+<% end %>

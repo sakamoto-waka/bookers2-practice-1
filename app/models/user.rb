@@ -12,8 +12,8 @@ class User < ApplicationRecord
   has_many :relationships, foreign_key: "follow_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
 
-  has_many :follows, through: "reverse_of_relationships", source: :follower
-  has_many :followers, through: "relationships", source: :follow
+  has_many :follows, through: "reverse_of_relationships", source: :follow
+  has_many :followers, through: "relationships", source: :follower
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 50 }
@@ -31,7 +31,7 @@ class User < ApplicationRecord
     relationships.find_by(follower_id: user_id).destroy
   end
 
-  def follow?(user)
+  def following?(user)
     followers.include?(user)
   end
 

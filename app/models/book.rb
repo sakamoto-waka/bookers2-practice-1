@@ -6,7 +6,20 @@ class Book < ApplicationRecord
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
 
-   def favorited_by?(user)
+  def favorited_by?(user)
     favorites.exists?(user_id: user.id)
+  end
+
+  def self.search_for(content, method)
+    # 後で変数作ってみる
+    if method == 'perfect'
+      Book.where(title: content)
+    elsif
+      Book.where('title LIKE ? OR body LIKE ?', content + '%', content + '%')
+    elsif
+      Book.where('title LIKE ? OR body LIKE ?', '%' + content, '%' + content)
+    else
+      Book.where('title LIKE ? OR body LIKE ?', '%' + content + '%', '%' + content + '%')
+    end
   end
 end

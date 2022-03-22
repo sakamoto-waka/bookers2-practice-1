@@ -2,8 +2,8 @@ class SearchesController < ApplicationController
   before_action :authenticate_user!
   
   def search
-    content = params[:content]
-    model = params[:model]
+    @content = params[:content]
+    @model = params[:model]
     method = params[:method]
     # 後で後置if使ってみる
     if model == 'user'

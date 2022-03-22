@@ -11,15 +11,15 @@ class Book < ApplicationRecord
   end
 
   def self.search_for(content, method)
-    # 後で変数作ってみる
+    book_title_body = 'title LIKE ? OR body LIKE ?'
     if method == 'perfect'
       Book.where((:title || :body) => content)
     elsif method == 'forward'
-      Book.where('title LIKE ? OR body LIKE ?', content + '%', content + '%')
+      Book.where(book_title_body, content + '%', content + '%')
     elsif method == 'backward'
-      Book.where('title LIKE ? OR body LIKE ?', '%' + content, '%' + content)
+      Book.where(book_title_body, '%' + content, '%' + content)
     else
-      Book.where('title LIKE ? OR body LIKE ?', '%' + content + '%', '%' + content + '%')
+      Book.where(book_title_body, '%' + content + '%', '%' + content + '%')
     end
   end
 end

@@ -10,7 +10,9 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <%= render 'searches/search_form' %>
+    <% if user_signed_in? %>
+      <%= render 'searches/search_form' unless current_page?(root_path) %>
+    <% end %>
       <main>
         <p id="notice"><%= notice %></p>
         <%= yield %>

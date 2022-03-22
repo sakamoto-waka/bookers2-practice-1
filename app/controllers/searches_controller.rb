@@ -6,10 +6,6 @@ class SearchesController < ApplicationController
     @model = params[:model]
     method = params[:method]
     # 後で後置if使ってみる
-    if @model == 'user'
-      @records = User.search_for(@content, method)
-    else
-      @records = Book.search_for(@content, method)
-    end
+    @model == 'user' ? @records = User.search_for(@content, method) : @records = Book.search_for(@content, method)
   end
 end

@@ -15,11 +15,11 @@ class Book < ApplicationRecord
     if method == 'perfect'
       Book.where((:title || :body) => content)
     elsif method == 'forward'
-      Book.where(book_title_body, content + '%', content + '%')
+      Book.where(book_title_body, "#{content}%", "#{content}%")
     elsif method == 'backward'
-      Book.where(book_title_body, '%' + content, '%' + content)
+      Book.where(book_title_body, "%#{content}", "%#{content}")
     else
-      Book.where(book_title_body, '%' + content + '%', '%' + content + '%')
+      Book.where(book_title_body, "%#{content}%", "%#{content}%")
     end
   end
 end

@@ -1,25 +1,23 @@
+<div id="comment_error">
+  <%= render 'layouts/errors', obj: book %>
+</div>
 <table>
   <tbody>
     <% book.book_comments.each do |comment| %>
       <tr>
         <td>
           <%= image_tag comment.user.get_profile_image, size: "50x50" %><br>
-          <%= link_to comment.book.title, book_path(comment) %>
+          <%= link_to comment.user.name, user_path(comment.user.id) %>
         </td>
         <td>
         <%= comment.comment %>
         </td>
         <td>
           <% if comment.user == current_user %>
-            <%= link_to 'Destroy', book_book_comment_path(comment.book, comment), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %>
+            <%= link_to 'Destroy', book_book_comment_path(comment.book, comment), method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: "btn btn-sm btn-danger" %>
           <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= form_with model: [book, book_comment] do |f| %>
-  <%= f.text_area :comment, class: "form-control", style: "height: 100px" %>
-  <%= f.submit '送信', class: "mt-2" %>
-<% end %>

@@ -1,16 +1,22 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :search
 
   def show
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
   end
-
+  
+  def search
+    @q = User.ransack(params[:q])
+  end
+  
   def index
     @users = User.all
     @book = Book.new
+    @ransack_users = @q.result(distinct: true)
   end
 
   def edit

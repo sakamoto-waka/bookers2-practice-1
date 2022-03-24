@@ -1,4 +1,9 @@
 <div class='container'>
+  <%= search_form_for @q do |f| %>
+    <!--name_contは、あいまい検索を指定-->
+    <%= f.text_field :name_cont %>
+    <%= f.submit "検索" %>
+  <% end %>
   <div class='row'>
     <div class='col-md-3'><h2>User info</h2>
       <%= render 'info', user: current_user %>
@@ -8,7 +13,7 @@
     </div>
     <div class='col-md-8 offset-md-1'>
       <h2>Users</h2>
-      <%= render 'index',users: @users %>
+      <%= render 'index',users: @users, ransack_users: @ransack_users %>
     </div>
   </div>
 </div>

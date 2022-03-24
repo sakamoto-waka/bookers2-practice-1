@@ -8,6 +8,15 @@
     </tr>
   </thead>
   <tbody>
+    <% if ransack_users.present? %>
+  <!--検索がヒットした場合-->
+      <% ransack_users.each do |user| %>
+        <%= user.name %>
+      <% end %>
+    <% else %>
+      <!--検索がヒットしなかった場合-->
+      <p>検索結果はありません</p>
+    <% end %>
     <% users.each do |user| %>
       <tr>
         <td><%= image_tag user.get_profile_image, size: '50x50' %></td>

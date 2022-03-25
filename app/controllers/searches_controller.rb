@@ -9,5 +9,8 @@ class SearchesController < ApplicationController
   #   @model == 'user' ? @records = User.search_for(@content, method) : @records = Book.search_for(@content, method)
   # end
 
+  def ransack_search
+    @search_users = @q.result(distinct: true)
+  end
 
 end

@@ -8,9 +8,9 @@
     </tr>
   </thead>
   <tbody>
-    <% if ransack_users.present? %>
+    <% if search_users.present? %>
   <!--検索がヒットした場合-->
-      <% ransack_users.each do |user| %>
+      <% search_users.each do |user| %>
         <%= user.name %>
       <% end %>
     <% else %>

@@ -1,4 +1,4 @@
-  <%= search_form_for q do |f| %>
+  <%= search_form_for q, url: search_path do |f| %>
     <!--name_contは、あいまい検索を指定-->
     <%= f.text_field :name_or_books_title_or_books_body_cont %>
     <%= f.submit "検索" %>

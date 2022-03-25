@@ -10,6 +10,7 @@ class SearchesController < ApplicationController
   # end
 
   def ransack_search
+    @q = User.ransack(params[:q])
     @search_users = @q.result.includes(:books)
   end
 

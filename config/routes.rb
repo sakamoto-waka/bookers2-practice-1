@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     get "follows" => "relationships#follow_users"
     get "followers" => "relationships#follower_users"
   end
-  # get 'search' => "searches#search"
+  get 'search' => "searches#ransack_search"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 end

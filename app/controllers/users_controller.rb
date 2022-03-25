@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @book = Book.new
+    @search_users = @q.result(distinct: true)
   end
 
   def edit

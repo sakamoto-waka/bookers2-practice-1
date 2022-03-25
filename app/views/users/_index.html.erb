@@ -8,17 +8,18 @@
     </tr>
   </thead>
   <tbody>
-    <% users.each do |user| %>
-      <tr>
-        <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
-        <td><%= user.name %></td>
-        <td>フォロー数： <%= user.follows.count %></td>
-        <td>フォロワー数： <%= user.followers.count %></td>
-        <td>
-          <%= render 'relationships/follow_button', user: user %>
-        </td>
-        <td><%= link_to 'Show', user, class: "user_#{user.id}" %></td>
-      </tr>
-    <% end %>
+    
+      <% users.each do |user| %>
+        <tr>
+          <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
+          <td><%= user.name %></td>
+          <td>フォロー数： <%= user.follows.count %></td>
+          <td>フォロワー数： <%= user.followers.count %></td>
+          <td>
+            <%= render 'relationships/follow_button', user: user %>
+          </td>
+          <td><%= link_to 'Show', user, class: "user_#{user.id}" %></td>
+        </tr>
+      <% end %>
   </tbody>
 </table>

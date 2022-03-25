@@ -11,7 +11,8 @@
   <body>
     <%= render 'layouts/header' %>
     <% if user_signed_in? %>
-      <%= render 'searches/search_form' unless current_page?(root_path) %>
+      <%= render 'layouts/ransack_search', q: @q %>
+      <%#= render 'searches/search_form' unless current_page?(root_path) %>
     <% end %>
       <main>
         <p id="notice"><%= notice %></p>

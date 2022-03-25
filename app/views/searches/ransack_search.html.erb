@@ -1,9 +1,7 @@
-<% if false %>
-  <% if @model == 'user' %>
-    <h2>Users search for "<%= @content %>"</h2>
-    <%= render 'users/index', users: @records %>
-  <% else %>
-    <h2>s search for "<%= @content %>"</h2>
-    <%= render 'books/index', books: @records %>
-  <% end %>
-<% end %>
+  <%# if @search_users.include?(:user) %>
+    <h2>Users search for 「<%= params[:q][:name_or_books_title_or_books_body_cont] %>」</h2>
+    <%= render 'users/index', users: @search_users %>
+  <%# else %>
+    <!--<h2>Books search for "<%#= @q %>"</h2>-->
+    <%#= render 'books/index', books: @search_users %>
+  <%# end %>

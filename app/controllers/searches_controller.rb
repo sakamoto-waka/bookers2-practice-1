@@ -10,7 +10,7 @@ class SearchesController < ApplicationController
   # end
 
   def ransack_search
-    @search_users = @q.result(distinct: true)
+    @search_users = @q.result.includes(:books)
   end
 
 end
